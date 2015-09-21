@@ -1,0 +1,25 @@
+heat_template_version: 2013-05-23
+
+description: >
+  HOT template to create an analyzer service template 
+
+resources:
+  service_template:
+    type: OS::Contrail::ServiceTemplate
+    properties:
+      name: "analyzer-template"
+      service_mode: "transparent"
+      service_type: "analyzer"
+      image_name: "-"
+      service_scaling: False
+      availability_zone_enable: False
+      ordered_interfaces: False
+      flavor: "-"
+      service_interface_type_list: ["left", "management"]
+      shared_ip_list: []
+      static_routes_list: []
+
+outputs:
+  service_template_fq_name:
+    description: FQ name of the service template
+    value: { get_attr: [ service_template, fq_name] }
